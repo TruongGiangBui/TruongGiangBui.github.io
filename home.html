@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="icon.ico">
+    <link rel="stylesheet"
+    href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/subject.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <meta charset="utf-8">
+    <title>Timetable Preview</title>
+    <script src="assets/fonts/fontawesome/js/all.js"></script>
+    <style>
+        body {
+          font-family: 'Roboto', sans-serif;
+        }
+        </style>
+</head>
+
+
+<body>
+    <header>
+        <div class="header">            
+            <img class="header__img" src="assets/img/headerlogo.png" alt="">
+            <input type="checkbox" class="show_mess_btn" hidden id="message">
+            <label for="message" class="cute_sticker">
+                <div class="sticker1" aria-label="Nhãn dán  bounching, cat bouncing up and down" role="img" tabindex="-1" style="background-image: url(&quot;https://scontent.xx.fbcdn.net/v/t39.1997-6/45202291_338941066925552_7287512272321118208_n.webp?_nc_cat=1&ccb=1-5&_nc_sid=0572db&_nc_ohc=4NZY9I-rUZsAX8LMgim&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=f81263b68a6e9ae04fbfddadbf3fb7ef&oe=6135B215&quot;); background-repeat: no-repeat; background-size: 128px 128px; cursor: default;margin-left: 20px; height: 128px; width: 128px;">
+                </div>
+                <div class="press_message">
+                    Nhấp chuột vào em ik ><
+                </div>
+            </label>
+            <div class="header_contact_info">
+                <label for="message">
+                    <div class="sticker1" aria-label="Nhãn dán  hiding, cat hiding in box" role="img" tabindex="-1" style="background-image: url(&quot;https://scontent.xx.fbcdn.net/v/t39.1997-6/45170103_338938786925780_7120102551726325760_n.webp?_nc_cat=1&ccb=1-5&_nc_sid=0572db&_nc_ohc=t37OsZ3gbjkAX_zdmUc&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=b5ca5508050f5e29f09b89e63afc9cd7&oe=61354716&quot;); background-repeat: no-repeat; background-size: 128px 128px; cursor: default; height: 128px; width: 128px;">
+                    </div>
+                    <div class="press_message">
+                        Đọc xong rồi thì nhấp lần nữa để ẩn đi nhó ^^
+                    </div>
+                </label>
+                <div class="header_box_right">
+                <p class="author_message">
+                    Sản phẩm chưa được thực nghiệm trên nhiều nguời dùng nên không thể tránh khỏi việc nảy sinh lỗi không mong muốn. Nếu trong quá trình sử dụng các bạn gặp bất cứ lỗi nào hãy liên hệ trực tiếp với mình qua link facebook hoặc email bên duới để mình có thể xử lí lỗi kịp thời nhất và mang lại trải nghiệm tốt nhất cho các bạn.
+                </p>
+                <div class="contact_box">
+                    <a href="https://www.facebook.com/giang.btg" class="contact_link">
+                    <i class="fab fa-facebook fb-icon"></i> Trường Giang
+                    </a>
+                    <div class="contact_link">
+                    <i class="fas fa-envelope fb-icon"></i> truonggiangbui10@gmail.com
+                    </div>
+                </div>
+                <!-- <p class="author_message">Dự án này hoàn toàn phi lợi nhuận. Nếu các bạn hài lòng về sản phẩm thì có thể ủng hộ mình tại đây nhá</p>
+
+                </div>
+                <div class="qrtab">
+                    <img class="viettin_qr" src="assets/img/viettinbank.jpg" alt="">
+                    <img class="viettel_qr" src="assets/img/viettelpay.jpg" alt="">
+                </div> -->
+            </div>
+            
+            
+        </div>
+    </header>
+    <div class="container">
+        <div id="alert_box">
+            <!-- <div id="alert_message" class="alert_message">
+                <i class="fas fa-exclamation-circle"></i>
+                <div class="alert_message_text">Lop nay ban chon roi maaaa</div>
+                <div class="sticker2" aria-label="Nhãn dán  no, cat shaking head no" role="img" tabindex="-1" style="background-image: url(&quot;https://scontent.xx.fbcdn.net/v/t39.1997-6/45170103_338938786925780_7120102551726325760_n.webp?_nc_cat=1&amp;ccb=1-3&amp;_nc_sid=0572db&amp;_nc_ohc=UwQJ3UU9DpcAX9HuFJ4&amp;_nc_ad=z-m&amp;_nc_cid=0&amp;_nc_ht=scontent.xx&amp;oh=b7c19945ff82206841de415b3264cea3&amp;oe=60CE7216&quot;); background-repeat: no-repeat; background-size: 80px 80px; cursor: default; height: 80px; width: 80px;"></div>
+            </div> -->
+        </div>
+        <div class="grid">
+            <div class="grid__row">
+                <div class="grid__column-6 search__tab">
+                    <div class="grid__row">
+                        <div class="search__bar__container">
+                            <div class="search__box">
+                                <input class="search__input" type="text" name="clasid" id="keyword">
+                                <div class="split"></div>
+                                <select id="select_keyword_filter" class="select__search">
+                                    <option value="classID">Mã lớp</option>
+                                    <option value="subjectname">Tên học phần</option> 
+                                    <option value="subjectID">Mã học phần</option>
+                                </select>
+                                <button id="search-btn" class="search_button"><i class="fas fa-search"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid__row" style="justify-content: center;">
+                        <select id="session_filter" class="select__filter" style="margin-right: 20px;width: 80px;height: 30px;">
+                            <option value="">Buổi</option>
+                            <option value="1">Sáng</option> 
+                            <option value="2">Chiều</option>
+                        </select>
+                        <select id="day_filter" class="select__filter" style="width: 80px;height: 30px;">
+                            <option value="">Thứ</option>
+                            <option value="2">2</option> 
+                            <option value="3">3</option>
+                            <option value="4">4</option> 
+                            <option value="5">5</option>
+                            <option value="6">6</option> 
+                        </select>
+                    </div>
+                    <div class="grid__row">
+                        <div class="search_result_container">
+                            <ul id="search_result_list" class="search_result_list">
+             
+                                <div class="loading_screen">
+                                    Đang tải dữ liệu
+                                </div>
+                                <div class="loading_icon_tab">
+                                    <div class="loading_icon">
+                                        <i class="fas fa-spinner loading_icon_spiner"></i>
+                                    </div>
+                                </div>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid__column-4 added_tab">
+                    <div class="grid__row">
+                        <div class="added_tab-header">
+                            Danh sách lớp đã chọn
+                        </div>
+                        
+                    </div>
+                    <div class="grid__row">
+                        <div class="added_container">
+                            <ul id="added_list" class="added_list">
+                               
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="grid">
+            <div class="preview_container">
+                <div class="select_week_tab">
+                    <button id="prev_week_btn" class="change_week_btn">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <div id="current_week" class="week_selected">Tuần: 37</div>
+                    <button id="next_week_btn" class="change_week_btn">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+                <div  class="grid__row timetable_tab">
+                    <div class="grid__column-2">
+                            <div class="set-cell">
+                                <div class="set-cell-header">
+                                    Thứ 2
+                                </div>
+                                <div class="cell-1"></div>
+                                <div class="cell-2"></div>
+                                <div class="cell-1"></div>
+                                <div class="cell-2"></div>
+                                <div class="cell-1"></div>
+                                <div class="cell-2"></div>
+                                <div class="cell-1"></div>
+                                <div class="cell-2"></div>
+                                <div class="cell-1"></div>
+                                <div class="cell-2"></div>
+                                <div class="cell-1"></div>
+                                <div class="cell-2"></div>
+                            </div>
+                    </div>
+                    <div class="grid__column-2">
+                            <div class="set-cell">
+                                <div class="set-cell-header">
+                                    Thứ 3
+                                </div>
+                                <div class="cell-1"></div>
+                                <div class="cell-2"></div>
+                                <div class="cell-1"></div>
+                                <div class="cell-2"></div>
+                                <div class="cell-1"></div>
+                                <div class="cell-2"></div>
+                                <div class="cell-1"></div>
+                                <div class="cell-2"></div>
+                                <div class="cell-1"></div>
+                                <div class="cell-2"></div>
+                                <div class="cell-1"></div>
+                                <div class="cell-2"></div>
+                            </div>
+                    </div>
+                    <div class="grid__column-2">
+                            <div class="set-cell">
+                                <div class="set-cell-header">
+                                    Thứ 4
+                                </div>
+                                <div class="cell-1"></div>
+                                <div class="cell-2"></div>
+                                <div class="cell-1"></div>
+                                <div class="cell-2"></div>
+                                <div class="cell-1"></div>
+                                <div class="cell-2"></div>
+                                <div class="cell-1"></div>
+                                <div class="cell-2"></div>
+                                <div class="cell-1"></div>
+                                <div class="cell-2"></div>
+                                <div class="cell-1"></div>
+                                <div class="cell-2"></div>
+                            </div>
+                    </div>
+                    <div class="grid__column-2">
+                            <div class="set-cell">
+                                <div class="set-cell-header">
+                                    Thứ 5
+                                </div>
+                                <div class="cell-1"></div>
+                                <div class="cell-2"></div>
+                                <div class="cell-1"></div>
+                                <div class="cell-2"></div>
+                                <div class="cell-1"></div>
+                                <div class="cell-2"></div>
+                                <div class="cell-1"></div>
+                                <div class="cell-2"></div>
+                                <div class="cell-1"></div>
+                                <div class="cell-2"></div>
+                                <div class="cell-1"></div>
+                                <div class="cell-2"></div>
+                            </div>
+                    </div>
+                    <div class="grid__column-2">
+                            <div class="set-cell">
+                                <div class="set-cell-header">
+                                    Thứ 6
+                                </div>
+                                <div class="cell-1"></div>
+                                <div class="cell-2"></div>
+                                <div class="cell-1"></div>
+                                <div class="cell-2"></div>
+                                <div class="cell-1"></div>
+                                <div class="cell-2"></div>
+                                <div class="cell-1"></div>
+                                <div class="cell-2"></div>
+                                <div class="cell-1"></div>
+                                <div class="cell-2"></div>
+                                <div class="cell-1"></div>
+                                <div class="cell-2"></div>
+                            </div>
+                    </div>
+                    <div id="time_table">
+                        
+                        </div> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="grid__row" style="justify-content: center;">
+        <div id="download_btn" class="search_button download_btn">
+            Tải xuống danh sách
+        </div>
+    </div>
+    <footer class="footer">
+        <img src="assets/img/foot.png" class="footer__img"alt="">
+    </footer>
+    <script src="obscript.js"></script>
+</body>
+
+</html>
